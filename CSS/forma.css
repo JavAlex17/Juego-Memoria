@@ -80,7 +80,7 @@ h1 {
 .card {
     width: 55px;
     height: 80px;
-    background-image: url('../OTROS/cartadif.png');
+    background-image: url('../OTROS/carta.png');
     background-size: cover;
     display: flex;
     justify-content: center;
