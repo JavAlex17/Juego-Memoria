@@ -142,7 +142,7 @@ h1 {
     margin-top: 330px;
 }
 
-.button1, .button2, .button3 {
+.button {
     /* botones */
     background-color: #577ab6;
     border: none;
@@ -151,7 +151,7 @@ h1 {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
     margin: 120px 25px; 
 }

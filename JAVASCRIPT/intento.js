@@ -152,8 +152,11 @@ function resetTimeAndScore() {
  * @param {string} level - Nivel de dificultad ('easy', 'medium', 'hard').
  */
 function setDifficulty(level) {
-    resetTimeAndScore(); // Reinicia el tiempo y el puntaje
+    resetTimeAndScore(); // Reinicia el puntaje
 
+    document.getElementById('botones').style.display = 'none';
+    document.getElementById('contenido1').style.display = 'block';
+    
     let n;
     switch (level) {
         case 'easy':
@@ -232,12 +235,28 @@ function initializeGame() {
 }
 
 // Inicializa el juego con dificultad 'easy'
-setDifficulty('easy');
+//setDifficulty('easy');
 
 // Evento para remover la clase 'flipping' después de la animación de volteamiento
 document.addEventListener('transitionend', function(event) {
     if (event.propertyName === 'transform') {
         event.target.classList.remove('flipping');
     }
-});
+})
 
+
+function goBack() {
+    document.getElementById('botones').style.display = 'block';
+    document.getElementById('contenido1').style.display = 'none';
+}
+
+function showLevels() {
+    // Oculta la pantalla de inicio y muestra la pantalla de niveles
+    document.getElementById('principal').style.display = 'none';
+    document.getElementById('botones').style.display = 'block';
+}
+
+function goPrincipal() {
+    document.getElementById('principal').style.display = 'block';
+    document.getElementById('botones').style.display = 'none';
+}
