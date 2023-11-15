@@ -20,14 +20,14 @@
 /* Estilos para las cartas del juego */
 
 .card {
-    width: 50px;
-    height: 70px;
-    background-image: url('../OTROS/images.jpeg');
+    width: 60px;
+    height: 80px;
+    background-image: url('../OTROS/cartadif.png');
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 25px;
     transition: transform 0.5s;
     cursor: pointer;
 }
