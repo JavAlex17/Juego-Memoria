@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorize</title>
+    <link rel="stylesheet" href="../CSS/pr1.css">
+</head>
+<body>
+    <div class="container">
+        <div class="info-container">
+            <div class="info">
+                <div id="timer">Tiempo: 00:00</div>
+                <div id="score">Puntaje: 0</div>
+            </div>
+            <div class= "buttons-container">
+                <button onclick="setDifficulty('easy')" class="button1">Fácil</button>
+                <button onclick="setDifficulty('medium')" class="button2">Medio</button>
+                <button onclick="setDifficulty('hard')" class="button3">Difícil</button>
+            </div>
+        </div>
+        <div class="game-container">
+            <div class="memory-board" id="memoryBoard"></div>
+            <div class="selected-cards" id="selectedCards"></div>
+        </div>
+    </div>
+    
+    <script src="../JAVASCRIPT/pr1.js"></script>
+</body>
+</html>
