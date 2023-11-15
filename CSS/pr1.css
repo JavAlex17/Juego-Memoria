@@ -52,10 +52,11 @@
     max-width: 800px;
     min-width: 100px; 
     margin: 0 auto;
-    background-color: #99af86;
+    background-image: url('../OTROS/Fondo_numeros2.jpg'); /* Ruta a tu imagen en la carpeta "otros" */
+    background-size: cover; /* Ajusta el tamaño de la imagen al contenedor */
     display: flex;
     align-items: center;
-    padding: 20px;
+    padding: 120px;
     height: auto; 
     position: relative; 
 }
