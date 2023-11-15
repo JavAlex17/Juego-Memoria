@@ -3,28 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memorize</title>
+    <title>Memorice</title>
     <link rel="stylesheet" href="../CSS/pr1.css">
 </head>
 <body>
     <div class="container">
-        <div class="info-container">
-            <div class="info">
-                <div id="timer">Tiempo: 00:00</div>
-                <div id="score">Puntaje: 0</div>
-            </div>
-            <div class= "buttons-container">
-                <button onclick="setDifficulty('easy')" class="button1">Fácil</button>
-                <button onclick="setDifficulty('medium')" class="button2">Medio</button>
-                <button onclick="setDifficulty('hard')" class="button3">Difícil</button>
+        <div id="start-screen">
+            <h1>MEMORICE</h1>
+            <button class="difficulty-button" onclick="startNewGame()">Empezar</button>
+        </div>
+        <div id="levels-screen" style="display: none;">
+            <h1>Selecciona la dificultad</h1>
+            <div class="options-container">
+                <button class="difficulty-button" onclick="startGame('easy')">Fácil</button>
+                <button class="difficulty-button" onclick="startGame('medium')">Medio</button>
+                <button class="difficulty-button" onclick="startGame('hard')">Difícil</button>
+                <button class="back-button" onclick="goBack()">Volver</button>
             </div>
         </div>
-        <div class="game-container">
-            <div class="memory-board" id="memoryBoard"></div>
-            <div class="selected-cards" id="selectedCards"></div>
+        <div id="game-screen" style="display: none;">
+            <h1>Memorice</h1>
+            <div id="game-container" class="game-container"></div>
+        </div>
+        <div id="victory-screen" style="display: none;">
+            <h1>Felicidades, ¡Haz ganado!</h1>
+            <button class="back-button" onclick="startNewGame()">Jugar de nuevo</button>
         </div>
     </div>
-    
+
     <script src="../JAVASCRIPT/pr1.js"></script>
 </body>
 </html>

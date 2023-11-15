@@ -1,243 +1,154 @@
-// Variables para almacenar información del juego
-let letters = [];
-let flippedCards = [];
-let matchedCards = [];
-let moves = 0;
-let timer = 0;
-let score = 0;
-let timerInterval;
-let numRows = 4;
-let numCols = 4;
+// Define una matriz con pares de números del 1 al 8
+let numbers = [];
 
-/**
- * Inicia el temporizador del juego.
- */
+// Variable para almacenar la dificultad seleccionada
+let selectedDifficulty = '';
 
-function startTimer() {
-    timerInterval = setInterval(() => {
-        timer++;
-        const formattedTime = formatTime(timer); // Aquí utilizamos formatTime para obtener el tiempo formateado
-        document.getElementById('timer').textContent = `Tiempo : ${formattedTime}`; 
-    }, 1000);
-}
-
-/**
- * Baraja los elementos del array.
- * @param {Array} array - Array a ser barajado.
- * @returns {Array} - Array barajado.
- */
-function shuffle(array) {
-    let currentIndex = array.length, temporaryValue, randomIndex;
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+// Función para barajar aleatoriamente los números en la matriz
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
     }
-
-    return array;
 }
 
-/**
- * Crea una carta y añade un evento de clic para voltearla.
- * @param {string} value - Valor de la carta.
- * @returns {HTMLDivElement} - Elemento de la carta.
- */
-function createCard(value) {
-    const card = document.createElement('div');
-    card.classList.add('card');
-    const image = document.createElement('img');
-    image.src = '../OTROS/cartadif.png'; 
-    let n = 3
-    image.style.width = image.style.height = n+'px'; 
-    card.appendChild(image);
-    card.addEventListener('click', () => flipCard(card));
-    card.dataset.value = value;
-    return card;
-}
+// Función para revelar la tarjeta y verificar si es un par
+let selectedCards = [];
+function revealCard(card, index) {
+    // Evita que se revelen más de 2 cartas al mismo tiempo
+    if (selectedCards.length < 2) {
+        card.textContent = numbers[index];
+        selectedCards.push({ card, number: numbers[index], index });
 
-/**
- * Voltea una carta y verifica si hay coincidencia.
- * @param {HTMLDivElement} card - Elemento de la carta.
- */
-function flipCard(card) {
-    if (flippedCards.length < 2 && !flippedCards.includes(card)) {
-        card.classList.add('flipping'); 
-        card.innerHTML = card.dataset.value;
-        flippedCards.push(card);
-        if (flippedCards.length === 2) {
-            setTimeout(checkMatch, 1000);
+        // Verifica si se han revelado 2 cartas
+        if (selectedCards.length === 2) {
+            // Si son iguales, desactívalas, si no, vuelve a ocultarlas después de un segundo
+            if (selectedCards[0].number === selectedCards[1].number) {
+                setTimeout(() => {
+                    selectedCards.forEach(({ card }) => {
+                        card.removeEventListener('click', () => revealCard(card, 0));
+                        card.classList.add('inactive');
+                    });
+                    selectedCards = [];
+
+                    // Verifica si se han completado todas las tarjetas
+                    if (document.querySelectorAll('.card:not(.inactive)').length === 0) {
+                        // Muestra la vista de victoria
+                        showVictoryScreen();
+                    }
+                }, 1000);
+            } else {
+                setTimeout(() => {
+                    selectedCards.forEach(({ card }) => {
+                        card.textContent = '?';
+                        card.addEventListener('click', () => revealCard(card, 0), { once: true });
+                    });
+                    selectedCards = [];
+                }, 1000);
+            }
         }
     }
 }
 
-/**
- * Actualiza las cartas seleccionadas en el panel.
- */
-function updateSelectedCards() {
-    const selectedCardsElement = document.getElementById('selectedCards');
-    selectedCardsElement.innerHTML = `Cartas seleccionadas: ${flippedCards.map(card => card.dataset.value).join(', ')}`;
+// Función para mostrar la pantalla de victoria
+function showVictoryScreen() {
+    document.getElementById('game-screen').style.display = 'none';
+    document.getElementById('victory-screen').style.display = 'block';
 }
 
-/**
- * Verifica si las cartas seleccionadas son iguales.
- */
-function checkMatch() {
-    const [card1, card2] = flippedCards;
-    moves++;
+// Función para comenzar un nuevo juego
+function startNewGame() {
+    // Baraja la matriz de números
+    shuffleArray(numbers);
 
-    if (card1.textContent === card2.textContent) {
-        setTimeout(() => {
-            card1.style.visibility = 'hidden';
-            card2.style.visibility = 'hidden';
-        }, 1000);
+    // Muestra la vista de selección de niveles
+    document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('levels-screen').style.display = 'block';
+    document.getElementById('game-screen').style.display = 'none';
+    document.getElementById('victory-screen').style.display = 'none';
 
-        matchedCards.push(card1, card2);
-        flippedCards = [];
-
-        score += 10;
-        document.getElementById('score').textContent = `Puntaje: ${score}`;
-
-        if (matchedCards.length === letters.length) {
-            clearInterval(timerInterval);
-            const formattedTime = formatTime(timer);
-            alert(`¡Has ganado! Movimientos: ${moves} - Tiempo: ${formattedTime}`);
-        }
-
-    } else {
-        flippedCards.forEach(card => {
-            card.textContent = '';
-        });
-        flippedCards = [];
-    }
-}
-
-function formatTime(seconds) {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
-}
-
-/**
- * Reorganiza las cartas en el tablero.
- */
-function reorganizeCards() {
-    const memoryBoard = document.getElementById('memoryBoard');
-    const cards = memoryBoard.querySelectorAll('.card');
-
-    cards.forEach(card => {
-        if (!matchedCards.includes(card)) {
-            card.style.order = Math.floor(Math.random() * cards.length);
-        }
-    });
-}
-
-function resetTimeAndScore() {
-    timer = 0;
-    score = 0;
-    document.getElementById('timer').textContent = `Tiempo: ${timer} segundos`; 
-    document.getElementById('score').textContent = `Puntaje: ${score}`;
-}
-
-/**
- * Cambia la dificultad del juego y reinicia el tiempo y puntaje.
- * @param {string} level - Nivel de dificultad ('easy', 'medium', 'hard').
- */
-
-/**
- * Inicializa el juego en la dificultad seleccionada.
- * @param {string} level - Nivel de dificultad ('easy', 'medium', 'hard').
- */
-function setDifficulty(level) {
-    resetTimeAndScore(); // Reinicia el tiempo y el puntaje
-
-    let n;
-    switch (level) {
-        case 'easy':
-            n = 8;
-            numRows = numCols = 4;
-            break;
-        case 'medium':
-            n = 18;
-            numRows = 6;
-            numCols = 6;
-            break;
-        case 'hard':
-            n = 32;
-            numRows = 8;
-            numCols = 8;
-            break;
+    // Elimina las tarjetas del juego anterior si las hay
+    const gameContainer = document.getElementById('game-container');
+    while (gameContainer.firstChild) {
+        gameContainer.removeChild(gameContainer.firstChild);
     }
 
-    letters = generateNumbers(n);
-
-    const memoryBoard = document.getElementById('memoryBoard');
-    memoryBoard.innerHTML = ''; 
-    memoryBoard.style.gridTemplateRows = `repeat(${numRows}, 1fr)`;
-    memoryBoard.style.gridTemplateColumns = `repeat(${numCols}, 1fr)`;
-    initializeGame();
+    // Elimina los botones de vuelta al inicio existentes
+    const existingBackButtons = document.querySelectorAll('.back-button');
+    existingBackButtons.forEach(button => button.remove());
 }
 
-/**
- * Genera un array de números duplicados.
- * @param {number} n - Número de cartas.
- * @returns {Array} - Array de números duplicados.
- */
-function generateNumbers(n) {
-    let numbers = [];
+// Función para comenzar el juego con la dificultad seleccionada
+function startGame(difficulty) {
+    // Almacena la dificultad seleccionada
+    selectedDifficulty = difficulty;
 
-    for (let i = 1; i <= n; i++) {
-        numbers.push(i.toString(), i.toString());
+    // Muestra la vista del juego con la dificultad seleccionada
+    document.getElementById('levels-screen').style.display = 'none';
+    document.getElementById('game-screen').style.display = 'block';
+
+    // Configura el juego según la dificultad
+    setupGame(selectedDifficulty);
+}
+
+// Función para configurar el juego según la dificultad
+function setupGame(difficulty) {
+    // Determina el número de filas y columnas según la dificultad
+    let rows, columns;
+
+    if (difficulty === 'easy') {
+        rows = columns = 4;
+    } else if (difficulty === 'medium') {
+        rows = columns = 5;
+    } else if (difficulty === 'hard') {
+        rows = columns = 6;
     }
 
-    return numbers;
-}
+    // Calcula el número total de cartas
+    const totalCards = rows * columns;
 
-/**
- * Reinicia el juego.
- */
-function resetGame() {
-    clearInterval(timerInterval);
-    flippedCards = [];
-    matchedCards = [];
-    moves = 0;
-    timer = 0;
-    score = 0;
-    initializeGame();
-}
-
-
-
-/**
- * Inicializa el juego con la dificultad actual.
- */
-function initializeGame() {
-
-    const memoryBoard = document.getElementById('memoryBoard');
-    memoryBoard.innerHTML = ''; // Limpia el contenido del tablero
-
-    const shuffledLetters = shuffle(letters);
-    shuffledLetters.forEach((value, index) => {
-        const card = createCard(value);
-        card.dataset.value = value;
-        memoryBoard.appendChild(card);
-    });
-
-    startTimer();
-    document.getElementById('timer').textContent = `Tiempo: ${timer} segundos`; 
-    document.getElementById('score').textContent = `Puntaje: ${score}`;
-}
-
-// Inicializa el juego con dificultad 'easy'
-setDifficulty('easy');
-
-// Evento para remover la clase 'flipping' después de la animación de volteamiento
-document.addEventListener('transitionend', function(event) {
-    if (event.propertyName === 'transform') {
-        event.target.classList.remove('flipping');
+    // Elimina las tarjetas del juego anterior si las hay
+    const gameContainer = document.getElementById('game-container');
+    while (gameContainer.firstChild) {
+        gameContainer.removeChild(gameContainer.firstChild);
     }
+
+    // Crea las cartas del nuevo juego en el contenedor
+    for (let i = 0; i < totalCards; i++) {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.textContent = '?'; // Inicialmente, muestra el símbolo de interrogación
+        card.addEventListener('click', () => revealCard(card, i));
+        gameContainer.appendChild(card);
+    }
+
+    // Establece el ancho y alto del contenedor del juego para organizar las cartas en un cuadrado
+    gameContainer.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+    gameContainer.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+
+    // Agrega el botón para volver al inicio
+    const backButton = document.createElement('button');
+    backButton.className = 'back-button';
+    backButton.textContent = 'Volver al Inicio';
+    backButton.addEventListener('click', goBack);
+    document.getElementById('game-screen').appendChild(backButton);
+}
+
+// Función para mostrar las opciones de dificultad
+function showStartScreen() {
+    document.getElementById('start-screen').style.display = 'block';
+    document.getElementById('levels-screen').style.display = 'none';
+    document.getElementById('game-screen').style.display = 'none';
+    document.getElementById('victory-screen').style.display = 'none';
+}
+
+// Función para volver a la pantalla de inicio
+function goBack() {
+    showStartScreen();
+}
+
+// Inicia un nuevo juego al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    numbers = [...Array(8).keys()].flatMap((i) => [i + 1, i + 1]);
+    showStartScreen();
 });
-
