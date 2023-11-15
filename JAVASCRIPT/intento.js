@@ -50,7 +50,7 @@ function createCard(value) {
     const card = document.createElement('div');
     card.classList.add('card');
     const image = document.createElement('img');
-    image.src = '../OTROS/cartadif.png'; 
+    //image.src = '../OTROS/cartadif.png'; 
     let n = 3
     image.style.width = image.style.height = n+'px'; 
     card.appendChild(image);

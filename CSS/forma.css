@@ -6,7 +6,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    background-color: #add5fa;
 }
 
 .container {
@@ -22,25 +22,37 @@ h1 {
 }
 
 .difficulty-button {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #f9a59a;
+    color: #333;
     padding: 10px 20px;
     margin: 5px;
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
     border: none;
     border-radius: 5px;
 }
 
 .back-button {
-    background-color: #3498db;
+    background-color: #95b8f6;
     color: white;
     padding: 10px 20px;
     margin: 5px;
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
     border: none;
     border-radius: 5px;
+}
+
+.button {
+    background-color: #fa5f49;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+
 }
 
 
@@ -66,7 +78,7 @@ h1 {
 /* Estilos para las cartas del juego */
 
 .card {
-    width: 60px;
+    width: 55px;
     height: 80px;
     background-image: url('../OTROS/cartadif.png');
     background-size: cover;
@@ -102,7 +114,7 @@ h1 {
     background-size: cover; /* Ajusta el tamaño de la imagen al contenedor */
     display: flex;
     align-items: center;
-    padding: 120px;
+    padding: 100px;
     height: auto; 
     position: relative; 
 }
