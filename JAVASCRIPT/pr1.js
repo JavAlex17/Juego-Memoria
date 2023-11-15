@@ -50,7 +50,7 @@ function createCard(value) {
     const card = document.createElement('div');
     card.classList.add('card');
     const image = document.createElement('img');
-    image.src = '../OTROS/images.jpeg'; 
+    image.src = '../OTROS/cartadif.png'; 
     let n = 3
     image.style.width = image.style.height = n+'px'; 
     card.appendChild(image);
@@ -215,6 +215,9 @@ function resetGame() {
  * Inicializa el juego con la dificultad actual.
  */
 function initializeGame() {
+
+    
+
     const memoryBoard = document.getElementById('memoryBoard');
     memoryBoard.innerHTML = ''; // Limpia el contenido del tablero
 
@@ -241,3 +244,23 @@ document.addEventListener('transitionend', function(event) {
 });
 
 
+function showLevels() {
+    // Oculta la pantalla de inicio y muestra la pantalla de niveles
+    document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('levels-screen').style.display = 'block';
+}
+
+function startGame(difficulty) {
+    // Lógica para iniciar el juego con la dificultad seleccionada
+    document.getElementById('levels-screen').style.display = 'none';
+    document.getElementById('game').style.display = 'block';
+    console.log(`Iniciando juego con dificultad: ${difficulty}`);
+    initializeGame();
+}
+
+function goBack() {
+    // Lógica para volver al inicio
+    // En este caso, simplemente volvemos a mostrar la pantalla de inicio y ocultamos la de niveles
+    document.getElementById('start-screen').style.display = 'block';
+    document.getElementById('levels-screen').style.display = 'none';
+}

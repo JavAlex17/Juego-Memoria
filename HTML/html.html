@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego</title>
+    <link rel="stylesheet" href="pr1.css">
+</head>
+<body>
+    <div class="container">
+        <div id="start-screen">
+            <h1>Juego</h1>
+            <button class="difficulty-button" onclick="showLevels()">Comenzar</button>
+        </div>
+        <div id="levels-screen" style="display: none;">
+            <h1>Selecciona un nivel</h1>
+            <div class= "buttons-container">
+                <button onclick="setDifficulty('easy')" class="button1">Fácil</button>
+                <button onclick="setDifficulty('medium')" class="button2">Medio</button>
+                <button onclick="setDifficulty('hard')" class="button3">Difícil</button>
+                <button class="back-button" onclick="goBack()">Volver</button>
+            </div>
+        </div>
+        <div id="game" style="display: none;">
+            <div id="timer">Tiempo: 00:00</div>
+            <div id="score">Puntaje: 0</div>
+            <div class="game-container">
+               <div class="memory-board" id="memoryBoard"></div>
+               <div class="selected-cards" id="selectedCards"></div>
+             </div>
+        </div>
+        
+    </div>
+
+    <script src="pr1.js"></script>
+</body>
+</html>
