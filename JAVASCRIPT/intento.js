@@ -50,8 +50,8 @@ function createCard(value) {
     const card = document.createElement('div');
     card.classList.add('card');
     const image = document.createElement('img');
-    //image.src = '../OTROS/cartadif.png'; 
-    let n = 3
+    image.src = '../OTROS/card7.jpeg';
+    let n = 80
     image.style.width = image.style.height = n+'px'; 
     card.appendChild(image);
     card.addEventListener('click', () => flipCard(card));

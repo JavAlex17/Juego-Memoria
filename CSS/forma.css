@@ -105,7 +105,8 @@ h2 {
 .card {
     width: 80px;
     height: 80px;
-    background-image: url('../OTROS/card7.jpeg');
+    /*background-image: url('../OTROS/card7.jpeg');*/
+    background-color: white;
     background-size: contain;
     display: flex;
     justify-content: center;
@@ -177,12 +178,13 @@ h2 {
 }
 
 .flipping.flipped {
-    transform: rotateY(180deg) perspective(1000px);
+    transform: rotateY(180deg) /*perspective(1000px)*/;
 }
 
 /* Efecto de escala al hacer hover sobre las cartas */
 .card:hover {
-    transform: scale(1.2);
+    /*transform: scale(1.2);*/
+    transform: rotateY(180deg);
 }
 
 
