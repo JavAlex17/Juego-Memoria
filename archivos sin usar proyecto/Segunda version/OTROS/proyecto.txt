@@ -1,0 +1,22 @@
+5. Juego de Memoria
+Desarrollar un juego de memoria clásico en el que los jugadores deben hacer clic en cartas para
+encontrar parejas iguales. Las cartas se distribuyen boca abajo y se voltean cuando se hace clic en
+ellas.
+Características claves:
+A. Cuadrícula de Cartas Aleatorias: El juego debe constar de una cuadrícula de cartas
+distribuidas aleatoriamente en una cuadrícula. Cada carta tiene una imagen o símbolo en el
+reverso. Las cartas se colocan boca abajo al principio del juego y se voltean cuando el
+jugador hace clic en ellas. Las cartas se distribuyen aleatoriamente en la cuadrícula en cada
+partida para que la ubicación de las parejas cambie en cada juego.
+B. Animaciones de Volteo de Cartas: Para mejorar la experiencia del jugador, las cartas
+deben tener animaciones de volteo al hacer clic. Cuando el jugador hace clic en una carta,
+esta se voltea para revelar su contenido. Si se seleccionan dos cartas diferentes, se vuelven a
+voltear después de un breve período para que el jugador pueda intentar emparejarlas.
+C. Seguimiento de Puntuación y Tiempo: Se debe realizar un seguimiento de la puntuación
+del jugador y el tiempo empleado en completar el juego. Cada vez que el jugador encuentra
+una pareja de cartas coincidentes, se suma una cantidad de puntos a su puntuación total.
+D. Niveles de Dificultad: el juego debe ofrecer diferentes niveles de dificultad con más cartas y
+desafíos adicionales. Los niveles de dificultad permiten al jugador elegir entre diferentes
+tamaños de cuadrícula, lo que afecta la cantidad de cartas en el juego. Cuantas más cartas
+haya, más difícil será encontrar todas las parejas.
+6. Aplicación de Gestión de Finanzas P

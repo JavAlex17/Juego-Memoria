@@ -1,0 +1,192 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #add5fa;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+.options-container {
+    margin-top: 20px;
+}
+
+.difficulty-button {
+    background-color: #f9a59a;
+    color: #333;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.back-button {
+    background-color: #95b8f6;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.button {
+    background-color: #fa5f49;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+
+}
+
+
+/* Ajusta el diseño de la forma de la grilla de cartas */
+/*
+
+*/
+.memory-board-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.memory-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Define el número de columnas */
+    gap: 10px;
+    max-width: 10%;
+    margin: 1px auto;
+    margin-top: 0px;
+    margin-left: 800px;
+}
+
+/* Estilos para las cartas del juego */
+
+.card {
+    width: 55px;
+    height: 80px;
+    background-image: url('../OTROS/cartadif.png');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    transition: transform 0.5s;
+    cursor: pointer;
+}
+
+/* Estilos para el contenedor del juego */
+*.game-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%; 
+    margin: auto;
+    flex-direction: column;
+    margin-left: -700px; 
+    height: auto;
+    width: 70%;
+    position: relative;
+}
+/* Estilos para el contenedor principal */
+
+.container {
+    width: 100%; 
+    max-width: 1000px;
+    min-width: 100px; 
+    margin: 0 auto;
+    background-image: url('../OTROS/Fondo_numeros2.jpg'); /* Ruta a tu imagen en la carpeta "otros" */
+    background-size: cover; /* Ajusta el tamaño de la imagen al contenedor */
+    display: flex;
+    align-items: center;
+    padding: 100px;
+    height: auto; 
+    position: relative; 
+}
+
+/* Media query para ajustar el diseño en pantallas más pequeñas */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px; 
+}
+
+
+
+/*Información del juego */
+.game-info {
+    margin-bottom: 20px;
+}
+
+/* Animación para las cartas */
+.flipping {
+    transform: rotateY(0deg) ;
+    transition: transform 0.5s;
+}
+
+.flipping.flipped {
+    transform: rotateY(180deg) perspective(1000px);
+}
+
+/* Efecto de escala al hacer hover sobre las cartas */
+.card:hover {
+    transform: scale(1.2);
+}
+
+
+.buttons-container {
+    display: flex; 
+    align-items: center; 
+    margin-top: 330px;
+}
+
+.button {
+    /* botones */
+    background-color: #577ab6;
+    border: none;
+    color: white;
+    padding: 150px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 120px 25px; 
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0px;
+    color: black;
+}
+
+#timer, #score {
+    margin: 0;
+    height: 100px;
+    margin-top: 100px;
+}
+
+#timer {
+    width: 150px;
+}
+
+#score {
+    width: 100px;
+}
+}

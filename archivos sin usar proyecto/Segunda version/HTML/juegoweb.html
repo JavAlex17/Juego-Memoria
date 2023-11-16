@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorize</title>
+    <link rel="stylesheet" href="../CSS/forma.css">
+</head>
+<body>
+    <div id="principal" style="display: block;">
+        <h1>Memorize Game</h1>
+        <h2>Encuentra los pares en el menor tiempo posible</h2>
+        <div class="buttons">
+            <button onclick="showLevels()" class="button">Comenzar</button>
+        </div>
+    </div>
+
+
+    <div id="botones" style="display: none;">
+        <div class= "buttons-container">
+                <button onclick="setDifficulty('easy')" class="difficulty-button">Fácil</button>
+                <button onclick="setDifficulty('medium')" class="difficulty-button">Medio</button>
+                <button onclick="setDifficulty('hard')" class="difficulty-button">Difícil</button>
+                <button onclick="goPrincipal()" class="back-button">Volver</button>
+        </div>
+    </div>
+
+
+    <div id="contenido1" style="display: none;">
+    <div class="container">
+        <div class="info-container">
+            <div class="info">
+                <div id="timer">Tiempo: 00:00</div>
+                <div id="score">Puntaje: 0</div>
+                
+            </div>  
+        </div>    
+        <div class="game-container">
+            <div class="memory-board" id="memoryBoard"></div>
+            <div class="selected-cards" id="selectedCards"></div>    
+        </div>
+        <div class= "buttons">
+            <button onclick="goBack()" class="back-button">Volver</button>
+        </div>
+    </div>
+    </div>
+    <script src="../JAVASCRIPT/intento.js"></script>
+</body>
+</html>
