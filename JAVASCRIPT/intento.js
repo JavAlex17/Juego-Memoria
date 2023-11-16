@@ -13,12 +13,18 @@ let numCols = 4;
  * Inicia el temporizador del juego.
  */
 
+User
 function startTimer() {
     timerInterval = setInterval(() => {
         timer++;
         const formattedTime = formatTime(timer); // Aquí utilizamos formatTime para obtener el tiempo formateado
         document.getElementById('timer').textContent = `Tiempo : ${formattedTime}`; 
     }, 1000);
+}
+
+function stopTimer() {
+    clearInterval(timerInterval); // Detén el temporizador actual, si hay uno en ejecución
+    resetTimeAndScore(); 
 }
 
 /**
@@ -50,7 +56,7 @@ function createCard(value) {
     const card = document.createElement('div');
     card.classList.add('card');
     const image = document.createElement('img');
-    //image.src = '../OTROS/card7.jpeg';
+    image.src = '../OTROS/card7.jpeg';
     let n = 80
     image.style.width = image.style.height = n+'px'; 
     card.appendChild(image);
@@ -140,6 +146,7 @@ function resetTimeAndScore() {
     score = 0;
     document.getElementById('timer').textContent = `Tiempo: ${timer} segundos`; 
     document.getElementById('score').textContent = `Puntaje: ${score}`;
+    
 }
 
 /**
@@ -203,7 +210,7 @@ function generateNumbers(n) {
  * Reinicia el juego.
  */
 function resetGame() {
-    clearInterval(timerInterval);
+    stopTimer();
     flippedCards = [];
     matchedCards = [];
     moves = 0;
@@ -218,6 +225,8 @@ function resetGame() {
  * Inicializa el juego con la dificultad actual.
  */
 function initializeGame() {
+    clearInterval(timerInterval); // Detiene el temporizador actual, si hay uno en ejecución
+    resetTimeAndScore(); // Reinicia el tiempo y el puntaje
 
     const memoryBoard = document.getElementById('memoryBoard');
     memoryBoard.innerHTML = ''; // Limpia el contenido del tablero
@@ -229,8 +238,8 @@ function initializeGame() {
         memoryBoard.appendChild(card);
     });
 
-    startTimer();
-    document.getElementById('timer').textContent = `Tiempo: ${timer} segundos`; 
+    startTimer(); // Inicia un nuevo temporizador
+    document.getElementById('timer').textContent = `Tiempo: ${timer} segundos`;
     document.getElementById('score').textContent = `Puntaje: ${score}`;
 }
 
@@ -246,6 +255,8 @@ document.addEventListener('transitionend', function(event) {
 
 
 function goBack() {
+    clearInterval(timerInterval); // Detén el temporizador actual, si hay uno en ejecución
+    resetTimeAndScore(); // Reinicia el tiempo y el puntaje
     document.getElementById('botones').style.display = 'block';
     document.getElementById('contenido1').style.display = 'none';
 }
@@ -257,6 +268,8 @@ function showLevels() {
 }
 
 function goPrincipal() {
+    clearInterval(timerInterval); // Detén el temporizador actual, si hay uno en ejecución
+    resetTimeAndScore(); // Reinicia el tiempo y el puntaje
     document.getElementById('principal').style.display = 'block';
     document.getElementById('botones').style.display = 'none';
 }
