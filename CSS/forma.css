@@ -106,7 +106,8 @@ h2 {
     width: 80px;
     height: 80px;
     /*background-image: url('../OTROS/card7.jpeg');*/
-    background-color: white;
+    /*background-color: white;*/
+    background-color: #95b8f6;
     background-size: contain;
     display: flex;
     justify-content: center;
@@ -122,8 +123,8 @@ h2 {
     text-align: center;
     display: grid;
     place-items: center;
-    /*background-color: white;*/
-    background-image: url('../OTROS/card7.jpeg');
+    background-color: white;
+    /*background-image: url('../OTROS/card7.jpeg');*/
 
 }
 
