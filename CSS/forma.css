@@ -39,7 +39,7 @@ h2 {
 }
 
 .difficulty-button {
-    background-color: #95b8f6;
+    background-color: #d4b253;
     color: #333;
     padding: 10px 20px;
     margin: 5px;
@@ -107,7 +107,7 @@ h2 {
     height: 80px;
     /*background-image: url('../OTROS/card7.jpeg');*/
     /*background-color: white;*/
-    background-color: #95b8f6;
+    background-color: #d4b253;
     background-size: contain;
     display: flex;
     justify-content: center;
@@ -200,7 +200,7 @@ h2 {
 
 .button {
     /* botones */
-    background-color: #577ab6;
+    background-color: #d4b253;
     border: none;
     color: white;
     padding: 150px 32px;
