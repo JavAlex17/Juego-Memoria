@@ -1,3 +1,4 @@
+/*Formato del fondo*/
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -6,16 +7,12 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    /*background-color: #add5fa;*/
     background-image: url('../OTROS/fondo8.jpg');
     background-size: 100% 100%;
-    /*background-position: 120px;*/
 }
 
-.container {
-    text-align: center;
-}
 
+/*Formato de los títulos*/
 
 h1 {
     color: rgb(42,17,13);
@@ -30,13 +27,35 @@ h2 {
 
 .subt2{
     padding-left: 55px;
-    font-size: 24px;
+    font-size: 28px;
     
+}
+
+/*Formato container*/
+
+.container {
+    width: 100%; 
+    max-width: 1100px;
+    min-width: 100px; 
+    margin: 0 auto;
+    /*opacity: 0.8;*/
+    background: rgba(253,248,206,0.5);
+    /*background-color: #f9d99a; /* Ruta a tu imagen en la carpeta "otros" */
+    background-size: contain; /* Ajusta el tamaño de la imagen al contenedor */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    height: auto; 
+    position: relative; 
 }
 
 .options-container {
     margin-top: 20px;
 }
+
+
+/*Formato botones*/
 
 .difficulty-button {
     background-color: #d4b253;
@@ -74,11 +93,26 @@ h2 {
 
 }
 
-/*.div-fondo{
-  width: 2000px;
-  background: rgba(255, 122, 89, .2);
-  background-size: cover;
+.buttons-container {
+    display: flex; 
+    align-items: center; 
+    margin-top: 330px;
 }
+
+/*.button {
+    background-color: #d4b253;
+    border: none;
+    color: white;
+    padding: 150px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 120px 25px; 
+}*/
+
+
 
 /* Ajusta el diseño de la forma de la grilla de cartas */
 /*
@@ -99,8 +133,9 @@ h2 {
     margin-left: 850px;
 }
 
-/* Estilos para las cartas del juego */
 
+
+/* Estilos para las cartas del juego */
 
 .card {
     width: 80px;
@@ -128,7 +163,9 @@ h2 {
 
 }
 
+
 /* Estilos para el contenedor del juego */
+
 *.game-container {
     display: flex;
     padding: 10px;
@@ -143,23 +180,7 @@ h2 {
     position: relative;
 
 }
-/* Estilos para el contenedor principal */
 
-.container {
-    width: 100%; 
-    max-width: 1100px;
-    min-width: 100px; 
-    margin: 0 auto;
-    /*opacity: 0.8;*/
-    background: rgba(253,248,206,0.5);
-    /*background-color: #f9d99a; /* Ruta a tu imagen en la carpeta "otros" */
-    background-size: contain; /* Ajusta el tamaño de la imagen al contenedor */
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    height: auto; 
-    position: relative; 
-}
 
 /* Media query para ajustar el diseño en pantallas más pequeñas */
 @media (max-width: 768px) {
@@ -192,25 +213,7 @@ h2 {
 }
 
 
-.buttons-container {
-    display: flex; 
-    align-items: center; 
-    margin-top: 330px;
-}
 
-.button {
-    /* botones */
-    background-color: #d4b253;
-    border: none;
-    color: white;
-    padding: 150px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 20px;
-    cursor: pointer;
-    margin: 120px 25px; 
-}
 
 .info {
     display: flex;
