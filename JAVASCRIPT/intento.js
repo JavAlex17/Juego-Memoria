@@ -115,7 +115,7 @@ function checkMatch() {
 
     } else {
         flippedCards.forEach(card => {
-            card.textContent = '';
+            card.innerHTML=`<img src="../OTROS/card7.jpeg" style="height: 80px; width: 80px;"></img>`
         });
         flippedCards = [];
     }
