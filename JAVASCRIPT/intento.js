@@ -111,6 +111,8 @@ function checkMatch() {
             clearInterval(timerInterval);
             const formattedTime = formatTime(timer);
             alert(`¡Has ganado! Movimientos: ${moves} - Tiempo: ${formattedTime}`);
+            document.getElementById('principal').style.display = 'block';
+            document.getElementById('contenido1').style.display = 'none';
         }
 
     } else {
