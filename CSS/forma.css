@@ -127,8 +127,6 @@ h2 {
 .card {
     width: 80px;
     height: 80px;
-    /*background-image: url('../OTROS/card7.jpeg');*/
-    /*background-color: white;*/
     background-color: #f1f1f1;
     background-size: contain;
     display: flex;
@@ -146,7 +144,6 @@ h2 {
     display: grid;
     place-items: center;
     background-color: white;
-    /*background-image: url('../OTROS/card7.jpeg');*/
 
 }
 
@@ -181,8 +178,8 @@ h2 {
 .game-info {
     margin-bottom: 20px;
 }
-
-/* Animación para las cartas */
+/*
+ Animación para las cartas
 .flipping {
     transform: rotateY(0deg) ;
     transform-style: preserve-3d;
@@ -193,12 +190,12 @@ h2 {
     transform: rotateY(180deg) perspective(1000px);
 }
 
-/* Efecto de escala al hacer hover sobre las cartas */
+Efecto de escala al hacer hover sobre las cartas 
 .card:hover {
-    /*transform: scale(1.2);*/
+    transform: scale(1.2);
     transform: rotateY(180deg);
 }
-
+*/
 
 
 
