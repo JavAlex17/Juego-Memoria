@@ -15,13 +15,13 @@ body {
 /*Formato de los títulos*/
 
 h1 {
-    color: rgb(42,17,13);
+    color: rgb(#311510);
     font-size: 55px;
     font-style: italic;
 }
 
 h2 {
-    color: rgb(42,17,13);
+    color: rgb(#311510);
     font-style: italic;
 }
 
@@ -58,19 +58,19 @@ h2 {
 /*Formato botones*/
 
 .difficulty-button {
-    background-color: #d4b253;
+    background-color: #FAD5AA;
     color: #333;
     padding: 10px 20px;
     margin: 5px;
     font-size: 18px;
     cursor: pointer;
-    border: none;
+    border-color: #311510;
     border-radius: 5px;
 }
 
 .back-button {
     /*background-color: #f9a59a;*/
-    background: rgb(154,54,34);
+    background-color: #A33E27;
     color: white;
     padding: 10px 20px;
     margin: 5px;
@@ -82,7 +82,7 @@ h2 {
 
 .button {
     /*background-color: #fa5f49;*/
-    background: rgb(154,54,34);
+    background-color: #A33E27;
     color: white;
     padding: 10px 20px;
     margin: 5px;
